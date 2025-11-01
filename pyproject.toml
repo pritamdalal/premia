@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "premia"
+version = "2025.11"
+description = "Derivatives pricing"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["py_vollib"]
+
+
