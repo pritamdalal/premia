@@ -72,7 +72,7 @@ def theta(
     dividend: float = 0.0,
 ) -> float:
     option_type = option_type.lower()
-    return _theta(option_type, spot, strike, ttm, risk_free, vol, dividend)
+    return _theta(option_type, spot, strike, ttm, risk_free, vol, dividend) * 365
 
 
 def vega(
@@ -136,13 +136,22 @@ def price_greeks(
 
 
 if __name__ == "__main__":
-    option_type = "p"
+    # option_type = "p"
+    # spot = 100
+    # strike = 95
+    # dividend = 0.05
+    # ttm = 0.5
+    # risk_free = 0.1
+    # vol = 0.2
+
+    option_type = "c"
     spot = 100
-    strike = 95
-    dividend = 0.05
-    ttm = 0.5
-    risk_free = 0.1
-    vol = 0.2
+    strike = 120
+    ttm = 5
+    vol = 0.30
+    risk_free = 0.01
+    dividend = 0
+
 
     # just price
     print(price(option_type, spot, strike, ttm, vol, risk_free, dividend))
