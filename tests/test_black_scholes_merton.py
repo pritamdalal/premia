@@ -12,7 +12,7 @@ def test_haug_put_value():
     dividend = 0.05
     
     value_reference = 2.4648
-    value_calc = price(option_type, spot, strike, ttm, vol, risk_free, dividend)
+    value_calc = price(option_type, strike, ttm, spot,vol, risk_free, dividend)
     assert abs(value_reference - value_calc) < 0.0001
 
 def test_haug_short_dated_call():
@@ -24,7 +24,7 @@ def test_haug_short_dated_call():
     risk_free = 0.08
     dividend = 0
 
-    res_greeks = price_greeks(option_type, spot, strike, ttm, vol, risk_free, dividend)
+    res_greeks = price_greeks(option_type,  strike, ttm, spot, vol, risk_free, dividend)
     assert abs(res_greeks["price"] - 2.1333684449) < 0.000001
     assert abs(res_greeks["delta"] - 0.3724827980) < 0.000001 
     assert abs(res_greeks["gamma"] - 0.0420427558) < 0.000001
@@ -42,7 +42,7 @@ def test_greeks_r_package_call_values():
     risk_free = 0.01
     dividend = 0
 
-    res_greeks = price_greeks(option_type, spot, strike, ttm, vol, risk_free, dividend)
+    res_greeks = price_greeks(option_type, strike, ttm, spot, vol, risk_free, dividend)
     assert abs(res_greeks["price"] - 21.577149923) < 0.000001
     assert abs(res_greeks["delta"] - 0.554941778) < 0.000001 
     assert abs(res_greeks["gamma"] - 0.005890593) < 0.000001
@@ -60,7 +60,7 @@ def test_odengard_call_values():
     risk_free = 0.1
     dividend = 0
 
-    res_greeks = price_greeks(option_type, spot, strike, ttm, vol, risk_free, dividend)
+    res_greeks = price_greeks(option_type, strike, ttm, spot, vol, risk_free, dividend)
     assert abs(res_greeks["price"] - 5.4532499260) < 0.000001
     assert abs(res_greeks["delta"] - 0.6337373578) < 0.000001 
     assert abs(res_greeks["gamma"] - 0.0354788717) < 0.000001
@@ -77,8 +77,8 @@ def test_odengard_put_and_call_values():
     risk_free = 0.10
     dividend = 0
 
-    call_greeks = price_greeks("c", spot, strike, ttm, vol, risk_free, dividend)
-    put_greeks = price_greeks("p", spot, strike, ttm, vol, risk_free, dividend)
+    call_greeks = price_greeks("c", strike, ttm, spot, vol, risk_free, dividend)
+    put_greeks = price_greeks("p", strike, ttm, spot,vol, risk_free, dividend)
     
     # call values
     assert abs(call_greeks["price"] - 14.9757907783) < 0.000001
