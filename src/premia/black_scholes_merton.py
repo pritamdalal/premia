@@ -4,9 +4,9 @@ parameter names to reduce user error.
 
 Function signatures:
 - option_type: 'c' (call) or 'p' (put)
-- spot: underlying spot price S
 - strike: strike price K
 - ttm: time to maturity in years
+- spot: underlying spot price S
 - vol: annualized volatility sigma
 - risk_free: annualized risk-free rate (continuously compounded)
 - dividend: annualized continuous dividend yield q (0.0 for classic Black–Scholes)
@@ -25,9 +25,9 @@ from py_vollib.black_scholes_merton.greeks.analytical import (
 
 def price(
     option_type: str,
-    spot: float,
     strike: float,
     ttm: float,
+    spot: float,
     vol: float,
     risk_free: float,
     dividend: float = 0.0,
@@ -38,9 +38,9 @@ def price(
 
 def delta(
     option_type: str,
-    spot: float,
     strike: float,
     ttm: float,
+    spot: float,
     vol: float,
     risk_free: float,
     dividend: float = 0.0,
@@ -51,9 +51,9 @@ def delta(
 
 def gamma(
     option_type: str,
-    spot: float,
     strike: float,
     ttm: float,
+    spot: float,
     vol: float,
     risk_free: float,
     dividend: float = 0.0,
@@ -64,9 +64,9 @@ def gamma(
 
 def theta(
     option_type: str,
-    spot: float,
     strike: float,
     ttm: float,
+    spot: float,
     vol: float,
     risk_free: float,
     dividend: float = 0.0,
@@ -77,9 +77,9 @@ def theta(
 
 def vega(
     option_type: str,
-    spot: float,
     strike: float,
     ttm: float,
+    spot: float,
     vol: float,
     risk_free: float,
     dividend: float = 0.0,
@@ -90,9 +90,9 @@ def vega(
 
 def rho(
     option_type: str,
-    spot: float,
     strike: float,
     ttm: float,
+    spot: float,
     vol: float,
     risk_free: float,
     dividend: float = 0.0,
@@ -113,9 +113,9 @@ _FUNCS = {
 
 def price_greeks(
     option_type: str,
-    spot: float,
     strike: float,
     ttm: float,
+    spot: float,
     vol: float,
     risk_free: float,
     dividend: float = 0.0,
@@ -130,7 +130,7 @@ def price_greeks(
         keys = list(which)
 
     return {
-        k: _FUNCS[k](option_type, spot, strike, ttm, vol, risk_free, dividend)
+        k: _FUNCS[k](option_type, strike, ttm, spot, vol, risk_free, dividend)
         for k in keys
     }
 
@@ -154,8 +154,8 @@ if __name__ == "__main__":
 
 
     # just price
-    print(price(option_type, spot, strike, ttm, vol, risk_free, dividend))
+    print(price(option_type, strike, ttm, spot, vol, risk_free, dividend))
     
-    res_greeks = price_greeks(option_type, spot, strike, ttm, vol, risk_free, dividend)
+    res_greeks = price_greeks(option_type, strike, ttm, spot, vol, risk_free, dividend)
     for ix_greek, ix_value in res_greeks.items():
         print(f"{ix_greek}: {ix_value}")

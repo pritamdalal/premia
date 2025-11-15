@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "premia"
-version = "2025.11"
+version = "2025.11.1"
 description = "Derivatives pricing"
 readme = "README.md"
 requires-python = ">=3.10"
